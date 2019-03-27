@@ -1,0 +1,23 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: postgres
+  user: postgres
+
+
+development:
+  <<: *default
+  database: spreetest_development
+
+
+test:
+  <<: *default
+  database: spreetest_test
+ 
+
+production:
+  <<: *default
+  database: spreetest_production
+  username: OneBitExchange
+  password: <%= ENV['EXCHANGE_DATABASE_PASSWORD'] %>
